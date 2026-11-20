@@ -1,0 +1,110 @@
+# Deployment_Pipeline for the Live_URL (Requirements 26.3 to 26.6).
+# Runs on every push to main and on manual dispatch. A failing check in the
+# build job stops the run before deployment.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One Pages deployment at a time. A queued run waits for the running one
+# instead of cancelling it, so the newest commit is the one that stays live.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Check, test and build
+    runs-on: ubuntu-latest
+    outputs:
+      main_script: ${{ steps.main-script.outputs.path }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+        with:
+          # The Kiro_Guard reads the root commit, so the full history is needed.
+          fetch-depth: 0
+
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the Kiro_Guard
+        run: npm run check:kiro
+
+      - name: Check translation key parity
+        run: npm run check:i18n
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Run the Test_Suite
+        run: npm run test
+
+      - name: Build the App
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload the build output
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Record the main script path
+        id: main-script
+        run: |
+          path=$(node --input-type=module -e "import { readFileSync } from 'node:fs'; import { findModuleScriptSources } from './scripts/verify-deploy.mjs'; const [src] = findModuleScriptSources(readFileSync('dist/index.html', 'utf8')); if (!src) { console.error('dist/index.html references no module script'); process.exit(1); } console.log(src);")
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+          echo "Main script: $path"
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+  verify:
+    name: Verify the Live_URL
+    needs:
+      - build
+      - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Request the Live_URL and its main script
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          MAIN_SCRIPT: ${{ needs.build.outputs.main_script }}
+        run: node scripts/verify-deploy.mjs "$PAGE_URL" "$MAIN_SCRIPT"
