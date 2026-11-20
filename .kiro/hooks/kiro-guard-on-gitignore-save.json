@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Kiro guard on gitignore save",
+      "trigger": "PostFileSave",
+      "description": "Runs the Kiro_Guard when the .gitignore file is saved, so a .kiro pattern is caught immediately. Requirement 28.5.",
+      "matcher": "(^|[\\\\/])\\.gitignore$",
+      "action": {
+        "type": "command",
+        "command": "npm.cmd run check:kiro"
+      }
+    }
+  ]
+}

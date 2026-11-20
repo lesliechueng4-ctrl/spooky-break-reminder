@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run tests on save",
+      "trigger": "PostFileSave",
+      "description": "Runs the Test_Suite (vitest run, non-watch) when a TypeScript source file under src is saved. Requirement 28.3.",
+      "matcher": "src[\\\\/].*\\.(ts|tsx)$",
+      "action": {
+        "type": "command",
+        "command": "npm.cmd run test"
+      }
+    }
+  ]
+}

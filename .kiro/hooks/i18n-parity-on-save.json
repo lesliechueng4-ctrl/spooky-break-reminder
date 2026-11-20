@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "i18n parity on save",
+      "trigger": "PostFileSave",
+      "description": "Runs the translation key parity check between en.json and zh-CN.json when a locale file is saved. Requirement 28.4.",
+      "matcher": "src[\\\\/]i18n[\\\\/]locales[\\\\/].*\\.json$",
+      "action": {
+        "type": "command",
+        "command": "npm.cmd run check:i18n"
+      }
+    }
+  ]
+}
