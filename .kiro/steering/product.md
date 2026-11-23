@@ -73,5 +73,5 @@ These rules apply to every visual effect, every sound and every screen, in both 
 ## Demo_Mode
 
 - Opened with `?demo=1`. Schedule time runs 60 times faster than wall-clock time, so the whole escalation shows within a few minutes (Requirement 25).
-- Rituals, countdowns and Whisper timing still run at wall-clock speed in Demo_Mode (Requirement 25.4).
+- Only the Work_Interval candle and the escalation run on schedule time, 60 times faster in Demo_Mode. The Snooze, Pause and Ritual countdowns, the Snooze and Pause lengths, and Whisper timing run at wall-clock speed in every mode (Requirement 25.4).
 - Demo_Mode uses its own storage namespace and its own lock name, so it never changes normal-use data (Requirement 25.7).

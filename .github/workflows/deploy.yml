@@ -1,6 +1,8 @@
 # Deployment_Pipeline for the Live_URL (Requirements 26.3 to 26.6).
 # Runs on every push to main and on manual dispatch. A failing check in the
-# build job stops the run before deployment.
+# build job stops the run before deployment. The a11y job runs after the
+# deployment, so a failing Lighthouse gate marks the run as failed but cannot
+# stop the deployment (Requirement 19.9, design step 4).
 name: Deploy to GitHub Pages
 
 on:
@@ -108,3 +110,47 @@ jobs:
           PAGE_URL: ${{ needs.deploy.outputs.page_url }}
           MAIN_SCRIPT: ${{ needs.build.outputs.main_script }}
         run: node scripts/verify-deploy.mjs "$PAGE_URL" "$MAIN_SCRIPT"
+
+  a11y:
+    name: Lighthouse accessibility
+    needs:
+      - deploy
+      - verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Write the Lighthouse CI config
+        run: |
+          cat > "$RUNNER_TEMP/lighthouserc.json" <<'EOF'
+          {
+            "ci": {
+              "collect": {
+                "numberOfRuns": 3,
+                "settings": {
+                  "onlyCategories": ["accessibility"]
+                }
+              },
+              "assert": {
+                "assertions": {
+                  "categories:accessibility": [
+                    "error",
+                    { "minScore": 0.9, "aggregationMethod": "median" }
+                  ]
+                }
+              },
+              "upload": {
+                "target": "filesystem",
+                "outputDir": ".lighthouseci"
+              }
+            }
+          }
+          EOF
+
+      - name: Run Lighthouse CI against the Live_URL
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: npx --yes @lhci/cli@0.16.1 autorun --config="$RUNNER_TEMP/lighthouserc.json" --collect.url="$PAGE_URL"

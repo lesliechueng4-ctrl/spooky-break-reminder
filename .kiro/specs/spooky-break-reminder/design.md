@@ -137,11 +137,15 @@ export const HEARTBEAT_MS = 30_000;              // persistence heartbeat (14.1)
 export function scheduleDelta(prevWall: number, nowWall: number, speed: 1 | 60): number {
   return Math.max(0, nowWall - prevWall) * speed;
 }
+/** Schedule speed of a mode: 60 in Demo_Mode, 1 otherwise (25.1, 25.3). */
+export function speedFor(demo: boolean): 1 | 60;
 /** Natural_Break_Duration in wall-clock ms; Demo_Mode uses 1 minute (25.5). */
 export function naturalBreakWallMs(settings: Settings, demo: boolean): number;
 ```
 
-Rituals and Whisper intervals do not use schedule time, so they run at wall-clock speed in every mode, including Demo_Mode (25.4). The Ritual_Engine measures its own progress with `performance.now()` deltas, and the Audio_Engine schedules Whispers on the `AudioContext` clock (see "Core: Policies").
+Schedule time drives only the Work_Interval candle and the escalation (Work_Elapsed and Overdue_Duration). Snooze and Pause lengths are wall-clock values: `snoozeMs` in `SchedulerConfig` and the `durationMs` of the `pause` event are wall-clock milliseconds. The Scheduler converts them with `speed` when it stores them. A Snooze stores `snoozeMs x speed` of schedule time and a Pause stores `durationMs x speed`, so both end at the wall-clock moment their length has passed (25.4). The views report the Snooze length and the Snooze and Pause remaining time in wall-clock milliseconds, rounded up. Overdue_Duration keeps accruing during a Snooze at schedule speed (11.3), so in Demo_Mode a Snooze adds 60 times its wall-clock length to Overdue_Duration.
+
+Rituals and Whisper intervals never use schedule time, so they run at wall-clock speed in every mode, including Demo_Mode (25.4). The Ritual_Engine measures its own progress with `performance.now()` deltas, and the Audio_Engine schedules Whispers on the `AudioContext` clock (see "Core: Policies").
 
 ### Core: Scheduler (`src/core/scheduler.ts`)
 
@@ -149,14 +153,16 @@ Rituals and Whisper intervals do not use schedule time, so they run at wall-cloc
 export type BreakType = 'micro' | 'long';
 export type RitualKind = 'eye' | 'breathing' | 'stretch';
 
-export interface SchedulerConfig {          // snapshot of Settings, in schedule ms
+export interface SchedulerConfig {          // snapshot of Settings
   workIntervalMs: number; longBreakFrequency: number;
-  escalationStepMs: number; snoozeMs: number;
+  escalationStepMs: number;                 // schedule ms
+  snoozeMs: number;                         // Snooze_Duration, wall-clock ms; converted with speed
+  speed: 1 | 60;                           // schedule ms per wall-clock ms (25.3)
 }
 export type SchedulerEvent =
   | { type: 'advance'; dt: number }                        // schedule ms, integer >= 0
   | { type: 'snooze' }
-  | { type: 'pause'; durationMs: number | null }           // null = until resumed
+  | { type: 'pause'; durationMs: number | null }           // wall-clock ms; null = until resumed
   | { type: 'resume' }
   | { type: 'ritualStarted'; kind: RitualKind; origin: 'early' | 'haunting' }
   | { type: 'ritualCompleted' }
@@ -207,15 +213,15 @@ Transition rules beyond `advance`:
 
 | Event | Precondition | Effect |
 |---|---|---|
-| `snooze` | Haunting, no Ritual, `snoozesUsed < 3`, no active Snooze | `snoozesUsed += 1`, `snoozeRemainingMs = h.snoozeMs`. Otherwise ignored (11.1, 11.8). |
-| `pause` | Calm, no Ritual | Records `workElapsedMs` (unchanged while paused) and sets `remainingMs`. |
+| `snooze` | Haunting, no Ritual, `snoozesUsed < 3`, no active Snooze | `snoozesUsed += 1`, `snoozeRemainingMs = h.snoozeMs`, the Snooze_Duration snapshot in schedule ms (wall-clock length times speed, 25.4). Otherwise ignored (11.1, 11.8). |
+| `pause` | Calm, no Ritual | Records `workElapsedMs` (unchanged while paused) and sets `remainingMs = durationMs x speed`, or null for until resumed (25.4). |
 | `resume` | Pause active | Clears the Pause (12.6). |
-| `ritualStarted` | No Ritual active | Sets `ritual`. During a Haunting it also ends an active Snooze, which stays counted toward the 3 Snoozes per Haunting (11.9); no `snoozeEnded` event is emitted, so no notification follows (15.2). In Calm (early break, 2.5) Work_Elapsed keeps accruing per its definition; if the Due_Time passes during the early Ritual, the Haunting starts with the Ritual already running, so no overdue accrues. |
-| `ritualCompleted` | Ritual active | Ritual_Exorcism for the break type of the Haunting, or of `nextBreakType` when in Calm (2.6). Micro: `breakCounter += 1`; Long: `breakCounter = 0`. New Calm with `workElapsedMs = 0` (1.3-1.5, 3.6). |
+| `ritualStarted` | No Ritual active | Sets `ritual` to the kind, the origin and the break type of the break it takes: `nextBreakType` in Calm, or the Haunting's `breakType` during a Haunting. `ritualCompleted` uses this stored break type (26.1). During a Haunting it also ends an active Snooze, which stays counted toward the 3 Snoozes per Haunting (11.9); no `snoozeEnded` event is emitted, so no notification follows (15.2). In Calm (early break, 2.5) Work_Elapsed keeps accruing per its definition; if the Due_Time passes during the early Ritual, the Haunting starts with the Ritual already running, so no overdue accrues. |
+| `ritualCompleted` | Ritual active | Ritual_Exorcism for the `breakType` stored in `ritual` at `ritualStarted` (2.6), so a later `configChanged`, or a Haunting that starts while an early Ritual runs, does not change it. Micro: `breakCounter = min(breakCounter + 1, frequency - 1)`, which keeps the invariant after a lowered frequency; Long: `breakCounter = 0`. New Calm with `workElapsedMs = 0` (1.3-1.5, 3.6). |
 | `ritualEnded` | Ritual active | Clears `ritual`; the Haunting continues with its stored overdue (7.6). |
 | `awayEnded` | `awayWallMs >= naturalBreakWallMs` | Haunting: Away_Exorcism (13.5). Calm: `workElapsedMs = 0`; with an active Pause this field is the recorded value the Pause resumes from, so the reset covers it (13.4). Both: `breakCounter = 0`, Ritual and Snooze cleared, a Pause is kept. Shorter periods change nothing. |
 | `jumpScarePresented` | Haunting | `jumpScareShown = true` (6.7). |
-| `configChanged` | any | Calm: `workElapsedMs = min(workElapsedMs, workIntervalMs)`, the Glossary cap of Work_Elapsed, so a shorter interval starts the Haunting at level 1 with zero overdue: at once in unpaused Calm (1.9), or, during a Pause, when the Pause ends by expiry or Resume, because `advance` reaches the Due_Time check only after the Pause (12.7). `breakCounter = min(breakCounter, frequency - 1)`, the Glossary cap of Break_Counter, keeps 1.2 reachable. A running Haunting keeps the `escalationStepMs` and `snoozeMs` it started with (Glossary: Escalation_Step, Snooze_Duration), so the level never drops because of a settings change and every Snooze of that Haunting has the same length. |
+| `configChanged` | any | Calm: `workElapsedMs = min(workElapsedMs, workIntervalMs)`, the Glossary cap of Work_Elapsed, so a shorter interval starts the Haunting at level 1 with zero overdue: at once in unpaused Calm (1.9), or, during a Pause, when the Pause ends by expiry or Resume, because `advance` reaches the Due_Time check only after the Pause (12.7). `breakCounter = min(breakCounter, frequency - 1)`, the Glossary cap of Break_Counter, keeps 1.2 reachable. A running Haunting keeps the `escalationStepMs` and `snoozeMs` it started with (Glossary: Escalation_Step, Snooze_Duration), so the level never drops because of a settings change and every Snooze of that Haunting has the same length. `derive` exposes `escalationStepMs` in the Haunting view, and `effectsFor` takes it from there, so the fog and the ghost follow the same snapshot as the level. |
 
 `ScheduleView` (derived, never stored):
 
@@ -224,17 +230,21 @@ export type ScheduleView =
   | { phase: 'calm'; level: 0; remainingMs: number; candleFraction: number; nextBreak: BreakType;
       pause: null | { remainingMs: number | null }; ritual: RitualKind | null }
   | { phase: 'haunting'; level: 1|2|3|4|5; breakType: BreakType; overdueMs: number;
-      overdueWholeMin: number; offered: RitualKind[];   // micro: ['eye'], long: ['breathing','stretch']
-      snoozesLeft: number; snoozeMs: number;            // the Haunting's Snooze_Duration snapshot; labels the Snooze control (11.1)
+      overdueWholeMin: number; escalationStepMs: number; // the Haunting's Escalation_Step snapshot; level and fog use it
+      offered: RitualKind[];   // micro: ['eye'], long: ['breathing','stretch']
+      snoozesLeft: number; snoozeMs: number;            // the Haunting's Snooze_Duration snapshot, wall-clock ms; labels the Snooze control (11.1)
       snoozeRemainingMs: number; jumpScareShown: boolean; ritual: RitualKind | null };
 ```
+
+In the view, `remainingMs`, `candleFraction`, `overdueMs`, `overdueWholeMin` and `escalationStepMs` are schedule time. `snoozeMs`, `snoozeRemainingMs` and `pause.remainingMs` are wall-clock milliseconds, rounded up, so a countdown reaches zero when its wall-clock length has passed.
 
 ### Core: Escalation and Effect Parameters (`src/core/escalation.ts`)
 
 `effectsFor(view, ctx)` turns a view into target values for the HauntLayer. All values are pure functions of the level, the overdue time, the Snooze count and the Ritual progress.
 
 ```ts
-export interface EffectContext { reducedMotion: boolean; ritualProgress: number; /* 0..1 */ }
+export interface EffectContext { reducedMotion: boolean; ritualProgress: number; /* 0..1 */
+  escalationStepMs: number; /* pass the view's snapshot, not the current setting */ }
 export interface EffectTargets {
   candleLit: boolean;
   veil: number;          // dark overlay opacity: 0 in Calm, 0.30 + 0.10 x (level - 1)
@@ -377,7 +387,7 @@ export function recordEvents(log: DailyLog, events: DomainEvent[], localDay: str
 | `audio/synth.ts` | Whisper = pink noise through three band-pass "formant" filters with a syllable envelope (about 3 s) and a generated reverb; chime and cue = sine partials; scream = detuned sawtooth with a pitch sweep | Seeded, team-made sounds (31.8). |
 | `pip.ts` | `documentPictureInPicture.requestWindow({ width: 320, height: 320 })` from a click; copies the CSS rules into the new document; sets `lang`; renders `GhostPanel` with Preact; `pagehide` on the Ghost_Window cleans up (17.6) | A Ritual started in the Ghost_Window runs there (17.5); closing the window ends that Ritual without completion. |
 | `tab.ts` | Writes `document.title` and the `<link rel="icon">` `href` only when they change | Six SVG favicons from `public/icons/` (16.3, 16.4). |
-| `instanceLock.ts` | `navigator.locks.request(name, { ifAvailable: true })`; if denied, shows the notice (22.1) and queues a normal request, which wins automatically when the active tab closes (22.4); take-over aborts the queued request and requests with `steal: true` (22.3); a tab whose lock was stolen stops its engine (22.2) | Lock names `sbr-active` and `sbr-active-demo`. The new active tab loads the last persisted state; the previous holder persisted on every transition and every 30 s, which is inside the 45 s Gap_Tolerance, so the hand-over counts as continuous time. |
+| `instanceLock.ts` | `navigator.locks.request(name, { ifAvailable: true })`; if denied, shows the notice (22.1) and queues a normal request, which wins automatically when the active tab closes (22.4); take-over aborts the queued request and requests with `steal: true` (22.3); a tab whose lock was stolen stops its engine (22.2). An inactive tab shows only the take-over notice until it becomes the Active_Instance; the Main_Screen and Onboarding do not render | Lock names `sbr-active` and `sbr-active-demo`. The new active tab loads the last persisted state; the previous holder persisted on every transition and every 30 s, which is inside the 45 s Gap_Tolerance, so the hand-over counts as continuous time. |
 | `media.ts` | `matchMedia('(prefers-reduced-motion: reduce)')` combined with the setting `system | on | off` (19.1, 19.2) | |
 
 ### Effects Renderer (`src/effects`)
@@ -484,7 +494,7 @@ export interface Settings {
 export interface SchedulerState {
   phase: CalmPhase | HauntPhase;
   breakCounter: number;              // invariant: 0 <= breakCounter < longBreakFrequency
-  ritual: { kind: RitualKind; origin: 'early' | 'haunting' } | null; // never persisted
+  ritual: { kind: RitualKind; origin: 'early' | 'haunting'; breakType: BreakType } | null; // never persisted; breakType fixed at ritualStarted (26.1)
 }
 export interface CalmPhase {
   kind: 'calm';

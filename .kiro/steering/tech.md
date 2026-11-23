@@ -40,7 +40,7 @@ Source of truth: `.kiro/specs/spooky-break-reminder/design.md` and `requirements
   - `UNOBSERVED_GAP_LIMIT_MS = 3_600_000`. An Intervention_Signal can count at most 60 minutes as elapsed.
   - `SUSPEND_EVIDENCE_MS = 30_000`.
   - `HEARTBEAT_MS = 30_000`. Persistence heartbeat (Requirement 14.1).
-- Rituals, countdowns and Whisper scheduling use wall-clock time in every mode (Requirement 25.4). Ritual state machines are pure, so the shell passes them monotonic timestamps read from `performance.now()`. Whispers are scheduled on the `AudioContext` clock.
+- Schedule time drives only the Work_Interval candle and the escalation. Snooze and Pause lengths are wall-clock: the Scheduler stores them as schedule time (`snoozeMs x speed`, `durationMs x speed`), and the view reports them in wall-clock ms. Rituals, the Snooze, Pause and Ritual countdowns, and Whisper scheduling use wall-clock time in every mode (Requirement 25.4). Ritual state machines are pure, so the shell passes them monotonic timestamps read from `performance.now()`. Whispers are scheduled on the `AudioContext` clock.
 - Wake-up cadence: visible document uses `setTimeout` clamped to 16 to 1000 ms. Hidden document uses the Worker metronome every 10 s, with main-thread timers as a backup.
 
 ## Scheduler invariants

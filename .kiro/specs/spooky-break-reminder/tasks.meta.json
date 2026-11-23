@@ -1,5 +1,26 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "5.2 Write property test for clock steps and Demo_Mode scaling": {
+      "status": "passed",
+      "lastRunTimestamp": 1795396087585
+    },
+    "5.8 Write property test for Pause exclusion": {
+      "status": "passed",
+      "lastRunTimestamp": 1795396498780
+    },
+    "5.5 Write property test for the break cycle": {
+      "status": "passed",
+      "lastRunTimestamp": 1795396611573
+    },
+    "5.7 Write property test for Snooze transparency and the limit of three": {
+      "status": "passed",
+      "lastRunTimestamp": 1795396716404
+    },
+    "7.4 Write property test for the Breathing_Ritual model": {
+      "status": "passed",
+      "lastRunTimestamp": 1795396908428
+    }
+  },
   "executionHistory": {
     "1.1 Initialize git and the toolchain in the workspace root": [
       {
@@ -66,6 +87,16 @@
         "executionId": "e1f4fc41-5a9d-4cc8-805a-3922878b39d2",
         "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
         "timestamp": 1795161933203
+      },
+      {
+        "executionId": "1a6ce2cc-04bb-4c96-80ee-cc11c0c74ac6",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795166974244
+      },
+      {
+        "executionId": "1a6ce2cc-04bb-4c96-80ee-cc11c0c74ac6",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167015151
       }
     ],
     "3.4 Write `docs/submission-checklist.md`": [
@@ -116,6 +147,1113 @@
         "executionId": "7c215d6c-f32f-47f0-8bac-9b6b7cfa1151",
         "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
         "timestamp": 1795163642873
+      },
+      {
+        "executionId": "7c215d6c-f32f-47f0-8bac-9b6b7cfa1151",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795163722596
+      }
+    ],
+    "2. Create the Kiro artifacts and the Kiro_Guard (Milestone 1)": [
+      {
+        "executionId": "7c215d6c-f32f-47f0-8bac-9b6b7cfa1151",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795163722624
+      }
+    ],
+    "3.2 Write `.github/workflows/deploy.yml` and commit it after task 2.5": [
+      {
+        "executionId": "7c215d6c-f32f-47f0-8bac-9b6b7cfa1151",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795163729140
+      },
+      {
+        "executionId": "7c215d6c-f32f-47f0-8bac-9b6b7cfa1151",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795164514483
+      }
+    ],
+    "3. Build the Deployment_Pipeline and the Submission_Checklist (Milestone 1)": [
+      {
+        "executionId": "7c215d6c-f32f-47f0-8bac-9b6b7cfa1151",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795164514555
+      }
+    ],
+    "4. Manual checkpoint (user): publish the Repository and the placeholder page (due 2026-11-21)": [
+      {
+        "executionId": "daf119bc-51e2-4b54-a263-0742f34ac174",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795166645939
+      },
+      {
+        "executionId": "bd2ef5d2-95b9-4f96-ad1a-1ca9b9ece96a",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795166856149
+      }
+    ],
+    "5.1 Implement `src/core/time.ts` and `src/core/rng.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167068208
+      },
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167291956
+      }
+    ],
+    "6.8 Implement the Flash_Guard in `src/core/flashGuard.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167068263
+      },
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167292270
+      }
+    ],
+    "7.1 Implement `src/core/rituals/common.ts` and the Eye_Ritual": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167068304
+      },
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167292315
+      }
+    ],
+    "8.1 Implement `src/core/settings.ts` and `src/core/persistence.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167068850
+      },
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167292455
+      }
+    ],
+    "8.4 Implement `src/i18n/index.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167069058
+      },
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167292833
+      }
+    ],
+    "5.3 Implement `src/core/scheduler.ts` and the shared generators": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167300531
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395958843
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395958917
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395970126
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396273392
+      }
+    ],
+    "6.1 Implement `classifyGap` in `src/core/continuity.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167300570
+      },
+      {
+        "executionId": "74bd264f-4355-4fb6-8399-50ee7655cab7",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395079101
+      }
+    ],
+    "7.3 Implement the Breathing_Ritual in `src/core/rituals/breathing.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167300609
+      },
+      {
+        "executionId": "74bd264f-4355-4fb6-8399-50ee7655cab7",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395079146
+      }
+    ],
+    "7.5 Implement the Stretch_Ritual in `src/core/rituals/stretch.ts`": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167300642
+      },
+      {
+        "executionId": "74bd264f-4355-4fb6-8399-50ee7655cab7",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395079193
+      }
+    ],
+    "8.2 Write property test for settings round trip and validation": [
+      {
+        "executionId": "9d8916c2-0719-479e-99a3-68526f02cda5",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795167300682
+      },
+      {
+        "executionId": "74bd264f-4355-4fb6-8399-50ee7655cab7",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395079229
+      }
+    ],
+    "8. Build the pure core: settings, persistence and i18n (Milestone 2)": [
+      {
+        "executionId": "74bd264f-4355-4fb6-8399-50ee7655cab7",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395079252
+      }
+    ],
+    "5.2 Write property test for clock steps and Demo_Mode scaling": [
+      {
+        "executionId": "74bd264f-4355-4fb6-8399-50ee7655cab7",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395121113
+      },
+      {
+        "executionId": "f66e43a9-b23e-4c48-b94f-ba67b6bcb582",
+        "chatSessionId": "sess_f462acff-c1e5-457c-b870-cbfa7bef5d3b",
+        "timestamp": 1795395201612
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395958882
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395970097
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396273334
+      }
+    ],
+    "5.4 Write property test for level and offer invariants": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395958941
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396285091
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396727685
+      }
+    ],
+    "5.5 Write property test for the break cycle": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395958963
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396285189
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396727734
+      }
+    ],
+    "5.6 Write property test for Exorcism and Away reset": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959004
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396285292
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396727779
+      }
+    ],
+    "5.7 Write property test for Snooze transparency and the limit of three": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959029
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396285339
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396727822
+      }
+    ],
+    "5.8 Write property test for Pause exclusion": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959051
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396285384
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396727856
+      }
+    ],
+    "6.3 Implement `effectsFor` and `fogCoverage` in `src/core/escalation.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959072
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396733642
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396987839
+      }
+    ],
+    "7.4 Write property test for the Breathing_Ritual model": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959106
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396733789
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396987916
+      }
+    ],
+    "9. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959127
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397001337
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397091288
+      }
+    ],
+    "10.1 Implement `clock.ts`, `ticker.ts` and `metronome.worker.ts` in `src/platform`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959148
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397095631
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397513641
+      }
+    ],
+    "10.2 Implement `src/platform/lifecycle.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959172
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397095703
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397513701
+      }
+    ],
+    "10.3 Implement `src/platform/storage.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959195
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397095735
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397513734
+      }
+    ],
+    "10.4 Implement `src/app/engine.ts` and `src/app/store.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959232
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795398246703
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795399562357
+      }
+    ],
+    "11.1 Implement `fogTexture.ts`, `cracks.ts` and `ghostArt.ts` in `src/effects`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959254
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397095771
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397513784
+      }
+    ],
+    "11.2 Implement `animator.ts` and `hauntLayer.ts` in `src/effects`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959275
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795398246792
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795400103233
+      }
+    ],
+    "11.4 Implement `src/core/audioPolicy.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959299
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397096024
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397513818
+      }
+    ],
+    "11.6 Implement `src/platform/audio/engine.ts` and `synth.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959323
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795398246836
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795398868395
+      }
+    ],
+    "12.1 Implement `src/core/tabStatus.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959357
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397519968
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795398236923
+      }
+    ],
+    "12.3 Implement the theme tokens and global styles": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959378
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795397520005
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795398236885
+      }
+    ],
+    "12.5 Implement `MainScreen`, `Candle` and the Whisper caption, and wire the playable loop": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959399
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795400114406
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795400787692
+      }
+    ],
+    "12.6 Implement `HauntControls` and `PauseMenu`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959423
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795400790565
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795401128182
+      }
+    ],
+    "12.7 Implement `RitualDialog` with `EyeRitual`, `BreathingRitual` and `StretchRitual`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959447
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795401131367
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402022676
+      }
+    ],
+    "12.9 Implement `src/platform/tab.ts` with the favicons and wire it": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959471
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402027111
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402189295
+      }
+    ],
+    "13.1 Implement `Settings`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959506
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402194472
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402544411
+      }
+    ],
+    "13.2 Implement `Notices`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959527
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402548484
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402767290
+      }
+    ],
+    "13.3 Implement `Onboarding`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959548
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402770478
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403089497
+      }
+    ],
+    "14. Checkpoint - Milestone 2 (due 2026-11-27): ensure all tests pass and the pipeline is green": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959571
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403093937
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403180104
+      }
+    ],
+    "15.1 Implement `src/core/notifyPolicy.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959593
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403184384
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403417428
+      }
+    ],
+    "15.3 Implement `src/platform/notifier.ts` and the notification controls": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959617
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403422316
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403833599
+      }
+    ],
+    "15.5 Implement `src/platform/pip.ts` and `GhostPanel`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959640
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403838355
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795404400622
+      }
+    ],
+    "16.1 Implement `shouldPresentJumpScare` and `nextHold` in `src/core/jumpScare.ts`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959662
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403184421
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403417488
+      }
+    ],
+    "16.3 Implement `NightmareWarning`, the Nightmare_Mode toggle, the indicator and `JumpScare`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959687
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795404406668
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795405014323
+      }
+    ],
+    "17.1 Implement `src/platform/idle.ts` and the away-detection toggle": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959724
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795405019331
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795405533530
+      }
+    ],
+    "17.3 Implement `src/platform/instanceLock.ts` and the take-over notice": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959747
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795405538578
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795406132535
+      }
+    ],
+    "18.1 Implement the language switch and complete the Chinese text": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959770
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795406137609
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795406406320
+      }
+    ],
+    "18.3 Implement Reduced_Motion, the live region and the layout checks": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959792
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795406410886
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795415973130
+      }
+    ],
+    "18.4 Add the Lighthouse accessibility job to the Deployment_Pipeline": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959815
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795415977389
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795416284061
+      }
+    ],
+    "19. Checkpoint - Milestone 3 (due 2026-11-30): ensure all tests pass, then manual integration checks (user)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959840
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795416292509
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795417873833
+      }
+    ],
+    "20.1 Write `docs/demo-script.md`": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959864
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795417879545
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418212747
+      }
+    ],
+    "20.3 Write `README.md` in English": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959889
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795417879579
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418213074
+      }
+    ],
+    "21. Manual checkpoint (user): capture the README screenshots (due 2026-12-01)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959910
+      }
+    ],
+    "22. Manual checkpoint (user): record and publish the Demo_Video (due 2026-12-03)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959933
+      }
+    ],
+    "23. Add the Demo_Video URL to the README and close the documentation items": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959956
+      }
+    ],
+    "24. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395959980
+      }
+    ],
+    "25. Manual checkpoint (user): final verification and submission (internal target 2026-12-04 06:00 Beijing)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795395960005
+      }
+    ],
+    "5. Build the pure core: time and Scheduler (Milestone 2, due 2026-11-27)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396727886
+      }
+    ],
+    "6. Build the pure core: continuity, escalation and Flash_Guard (Milestone 2)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396987876
+      }
+    ],
+    "7. Build the pure core: Rituals (Milestone 2)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795396987947
+      }
+    ],
+    "10. Build the platform adapters and the engine (Milestone 2)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795399562401
+      }
+    ],
+    "11. Build the effects renderer and the Audio_Engine (Milestone 2)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795400103340
+      }
+    ],
+    "12. Build the Main_Screen, the Ritual UI and the tab status (Milestone 2)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795402189322
+      }
+    ],
+    "13. Build the Settings_Panel, the notices and the Onboarding_Screen (Milestone 2)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795403089536
+      }
+    ],
+    "15. Add notifications and the Ghost_Window (Milestone 3, due 2026-11-30)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795404400665
+      }
+    ],
+    "16. Add Nightmare_Mode and the Jump_Scare (Milestone 3)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795405014363
+      }
+    ],
+    "17. Add away detection, the single active tab and the optional Daily_Log (Milestone 3)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795406132580
+      }
+    ],
+    "18. Complete the language switch and accessibility (Milestone 3)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795416284093
+      }
+    ],
+    "20. Write the Demo_Script and the README (Milestone 4, due 2026-12-01)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418213100
+      }
+    ],
+    "26.1 Record the break type when an early Calm Ritual starts": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418812438
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418906121
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419218237
+      }
+    ],
+    "26.5 Ritual dialog empty box": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418812490
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795418906161
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419218330
+      }
+    ],
+    "26.3 Escalation_Step snapshot": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419226609
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419447177
+      }
+    ],
+    "26.8 Inactive tab": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419447552
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419566378
+      }
+    ],
+    "26.2 Hidden Ritual deadline": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795419573325
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795420029551
+      }
+    ],
+    "26.4 Connect the notifier": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795420029935
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795420308197
+      }
+    ],
+    "26.6 Demo_Mode countdown timing": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795420308829
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795421162298
+      }
+    ],
+    "26.7 Whisper captions in the Ghost_Window": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795421162352
+      },
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795421576999
+      }
+    ],
+    "26. Fixes from the Milestone 3 review (Milestone 3)": [
+      {
+        "executionId": "6fa2ef7d-8c6a-4d64-800e-a7efe56c0b93",
+        "chatSessionId": "sess_3909cf72-7785-488b-a9ac-e84dab1c9dfc",
+        "timestamp": 1795421577053
       }
     ]
   }

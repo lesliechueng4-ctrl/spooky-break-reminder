@@ -79,8 +79,8 @@ These limitations follow from what browsers report to a page. The README browser
 - **Ritual_Exorcism**: An Exorcism caused by a completed Ritual.
 - **Away_Exorcism**: An Exorcism caused by an Away_Period of at least Natural_Break_Duration.
 - **Snooze**: A user action during a Haunting that hides the Haunting_Effects for the Snooze_Duration while Overdue_Duration keeps accruing.
-- **Snooze_Duration**: The length of one Snooze. Default 5 minutes; configurable from 1 to 15 minutes. A Haunting uses the Snooze_Duration in effect when the Haunting started.
-- **Pause**: A user action in Calm_State that suspends Work_Elapsed for a chosen duration.
+- **Snooze_Duration**: The wall-clock length of one Snooze. Default 5 minutes; configurable from 1 to 15 minutes. A Haunting uses the Snooze_Duration in effect when the Haunting started.
+- **Pause**: A user action in Calm_State that suspends Work_Elapsed for a chosen wall-clock duration.
 - **Away_Period**: A continuous period in which the user is treated as absent: the Idle_Monitor reports the user as idle or the screen as locked, or an Unobserved_Gap is classified as an Away_Period under Requirement 14.
 - **Natural_Break_Duration**: The minimum Away_Period length that counts as a break. Default 5 minutes; configurable from 1 to 30 minutes.
 - **Gap_Tolerance**: The longest time between two consecutive schedule evaluations of the App that the Scheduler counts as continuous running time: 45 seconds, which is below the smallest configurable Natural_Break_Duration of 1 minute.
@@ -94,7 +94,7 @@ These limitations follow from what browsers report to a page. The README browser
 - **Reduced_Motion**: The App state in which moving and scaling effects are replaced with static images and opacity transitions.
 - **Flash**: A pair of opposing changes in relative luminance as defined by WCAG 2.2 Success Criterion 2.3.1.
 - **Master_Volume**: The overall sound level setting. Default 30%; configurable from 0% to 100% in 5% steps.
-- **Demo_Mode**: A mode for judges and the demo video in which schedule time runs 60 times faster than wall-clock time.
+- **Demo_Mode**: A mode for judges and the demo video in which schedule time, which drives the Work_Interval and the escalation, runs 60 times faster than wall-clock time (Requirement 25.4).
 - **Daily_Log**: The counts of breaks and Snoozes for the current local calendar day.
 - **Active_Instance**: The single App tab that runs the Scheduler when the App is open in several tabs of the same mode; normal use and Demo_Mode each have their own Active_Instance.
 - **Live_URL**: The public GitHub Pages address of the App, `https://<github-user>.github.io/spooky-break-reminder/`.
@@ -469,8 +469,8 @@ These limitations follow from what browsers report to a page. The README browser
 
 1. WHEN the App URL contains the query parameter demo=1, THE App SHALL enable Demo_Mode.
 2. THE Settings_Panel SHALL provide a Demo_Mode toggle.
-3. WHERE Demo_Mode is enabled, THE Scheduler SHALL advance Work_Elapsed, Overdue_Duration, Snooze time and Pause time 60 times faster than wall-clock time.
-4. WHERE Demo_Mode is enabled, THE App SHALL run every Ritual and every Whisper interval at wall-clock speed.
+3. WHERE Demo_Mode is enabled, THE Scheduler SHALL advance Work_Elapsed and Overdue_Duration 60 times faster than wall-clock time.
+4. THE App SHALL use schedule time only for the Work_Interval candle and the escalation, which are Work_Elapsed and Overdue_Duration. In every mode, including Demo_Mode, the Snooze countdown, the Pause countdown, every Ritual countdown and every Whisper interval SHALL run on wall-clock time. In every mode, a Snooze_Duration and a Pause duration SHALL last their stated wall-clock length, so in Demo_Mode a 5 minute Snooze lasts 5 minutes of wall-clock time.
 5. WHERE Demo_Mode is enabled, THE Scheduler SHALL use a Natural_Break_Duration of 1 minute of wall-clock time.
 6. WHERE Demo_Mode is enabled, THE Main_Screen SHALL display a persistent "Demo x60" indicator.
 7. WHERE Demo_Mode is enabled, THE App SHALL keep Demo_Mode activity separate from the Daily_Log and from the persisted schedule state of normal use.
