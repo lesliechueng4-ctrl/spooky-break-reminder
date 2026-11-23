@@ -1,0 +1,700 @@
+/*
+ * Global styles for the App document.
+ *
+ * Colors, fonts, sizes, layers and motion timings are --sbr-* custom properties
+ * written by installTheme() from src/ui/theme.ts. Do not hard-code them here.
+ *
+ * Conventions:
+ * - Text sits on an opaque panel (.sbr-panel) when effects can be behind it (Requirement 4.10).
+ * - An element that moves or scales carries the class .sbr-move. Reduced_Motion removes its animation.
+ * - Only opacity and transform may animate.
+ */
+
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--sbr-color-page-bg);
+  color: var(--sbr-color-ink);
+  font-family: var(--sbr-font-ui);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-wrap: break-word;
+}
+
+/* Keep the page within the viewport width from 360 to 2560 CSS px (Requirement 19.8). */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--sbr-font-display);
+}
+
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3 {
+  font-family: var(--sbr-font-ui);
+}
+
+/* Visible keyboard focus on every control (Requirement 19.5). */
+:focus-visible {
+  outline: var(--sbr-size-focus-width) solid var(--sbr-color-focus-ring);
+  outline-offset: var(--sbr-size-focus-offset);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  min-width: var(--sbr-size-control-min);
+  min-height: var(--sbr-size-control-min);
+  max-width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--sbr-color-panel-edge);
+  border-radius: var(--sbr-size-radius);
+  background-color: var(--sbr-color-button-bg);
+  color: var(--sbr-color-button-ink);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  touch-action: manipulation;
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--sbr-color-button-bg-hover);
+}
+
+/* Disabled is shown by the border, not by dimming, so the label keeps its contrast. */
+button:disabled {
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+input:not([type]),
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  min-height: var(--sbr-size-control-min);
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--sbr-color-panel-edge);
+  border-radius: var(--sbr-size-radius);
+  background-color: var(--sbr-color-input-bg);
+  color: var(--sbr-color-ink);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--sbr-color-accent);
+}
+
+dialog {
+  max-width: min(var(--sbr-size-panel-max-width), calc(100vw - 2rem));
+  padding: 1.25rem;
+  border: 1px solid var(--sbr-color-panel-edge);
+  border-radius: var(--sbr-size-radius);
+  background-color: var(--sbr-color-panel-bg);
+  color: var(--sbr-color-ink);
+}
+
+/*
+ * A closed dialog stays hidden. A class rule that sets display (for example .sbr-ritual, which uses flex)
+ * would otherwise override the browser's hidden state and show an empty box (task 26.5, Requirement 19.5).
+ * An open dialog does not match this selector, so it keeps its own layout.
+ */
+dialog:not([open]) {
+  display: none;
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.7);
+}
+
+/* Opaque panel for controls and status text over the effects. */
+.sbr-panel {
+  position: relative;
+  z-index: var(--sbr-layer-ui);
+  max-width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--sbr-color-panel-edge);
+  border-radius: 1.5rem 1.5rem var(--sbr-size-radius) var(--sbr-size-radius);
+  background-color: var(--sbr-color-panel-bg);
+  color: var(--sbr-color-ink);
+  overflow-wrap: anywhere;
+}
+
+.sbr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Hidden document: CSS animations stop and do not schedule frames (Requirement 19.10). */
+html[data-hidden='true'] *,
+html[data-hidden='true'] *::before,
+html[data-hidden='true'] *::after {
+  animation-play-state: paused !important;
+}
+
+/*
+ * Reduced_Motion. data-reduced-motion="true" turns it on, "false" turns it off
+ * even when the OS asks for it, and no attribute follows the OS preference
+ * (Requirements 19.1 to 19.3).
+ */
+html[data-reduced-motion='true'] .sbr-move {
+  animation: none !important;
+  transition-property: opacity !important;
+}
+
+/* The breathing guide shows its phase by opacity instead of scale (Requirement 19.3). */
+html[data-reduced-motion='true'] .sbr-breath-circle {
+  transform: none !important;
+  opacity: 0.45;
+}
+
+html[data-reduced-motion='true'] .sbr-breath-circle[data-phase='inhale'] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-reduced-motion='false']) .sbr-move {
+    animation: none !important;
+    transition-property: opacity !important;
+  }
+
+  html:not([data-reduced-motion='false']) .sbr-breath-circle {
+    transform: none !important;
+    opacity: 0.45;
+  }
+
+  html:not([data-reduced-motion='false']) .sbr-breath-circle[data-phase='inhale'] {
+    opacity: 1;
+  }
+}
+
+/*
+ * Main_Screen (task 12.5). The effect layer sits at --sbr-layer-effects, below every .sbr-panel
+ * (--sbr-layer-ui), so text never sits under a veil or fog.
+ */
+.sbr-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 100vh;
+  padding: 1rem;
+  text-align: center;
+}
+
+.sbr-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: min(100%, var(--sbr-size-panel-max-width));
+}
+
+.sbr-title {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.sbr-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sbr-badge {
+  padding: 0.125rem 0.625rem;
+  border: 1px solid var(--sbr-color-accent);
+  border-radius: 999px;
+  color: var(--sbr-color-accent);
+  font-size: 0.875rem;
+}
+
+.sbr-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: min(100%, var(--sbr-size-panel-max-width));
+}
+
+.sbr-status h2 {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-size: 1.25rem;
+}
+
+.sbr-status p {
+  margin: 0;
+}
+
+.sbr-countdown {
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.sbr-overdue {
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.sbr-caption {
+  width: min(100%, var(--sbr-size-panel-max-width));
+  margin: 0;
+  font-style: italic;
+}
+
+.sbr-sound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sbr-sound-hint {
+  margin: 0;
+  color: var(--sbr-color-ink-muted);
+}
+
+/* Haunting and Pause controls (task 12.6). Each group is an opaque panel, so its text keeps its contrast. */
+.sbr-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100%, var(--sbr-size-panel-max-width));
+}
+
+.sbr-controls-heading {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-size: 1.1rem;
+}
+
+.sbr-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sbr-note {
+  margin: 0;
+  color: var(--sbr-color-ink-muted);
+}
+
+/* Candle: wax height is scaleY(candleFraction) (Requirement 2.1). */
+.sbr-candle {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.sbr-candle-flame {
+  width: 1.1rem;
+  height: 1.8rem;
+  margin-bottom: 0.25rem;
+  border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+  background: radial-gradient(ellipse at 50% 70%, #fff6d0 0%, #ffd166 40%, #ff8c42 85%, rgb(255 140 66 / 0) 100%);
+  box-shadow: 0 0 1.5rem rgb(255 179 71 / 0.6);
+  transform-origin: 50% 100%;
+}
+
+.sbr-candle[data-lit='false'] .sbr-candle-flame {
+  display: none;
+}
+
+.sbr-candle-flame.sbr-move {
+  animation: sbr-flicker 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes sbr-flicker {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(0.92, 1.06);
+  }
+}
+
+.sbr-candle-body {
+  position: relative;
+  width: 2.75rem;
+  height: 9rem;
+}
+
+.sbr-candle-wax {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.35rem 0.35rem 0.2rem 0.2rem;
+  background: linear-gradient(90deg, #c9b98f, #f4ead0 45%, #d9cba3);
+  transform-origin: 50% 100%;
+  transition: transform 1s linear;
+}
+
+.sbr-candle-base {
+  width: 3.5rem;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--sbr-color-panel-edge);
+}
+
+/*
+ * Ritual dialog (task 12.7). The dialog is an opaque panel, so its text keeps its contrast over the
+ * effects. The Eye_Ritual dialog uses the darker screen colour and shows only the countdown, the
+ * instruction and the Abandon control (Requirements 8.1, 8.3).
+ */
+.sbr-ritual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(calc(100vw - 2rem), var(--sbr-size-panel-max-width));
+  text-align: center;
+}
+
+.sbr-ritual--eye {
+  background-color: var(--sbr-color-eye-screen-bg);
+  min-height: 60vh;
+  justify-content: center;
+}
+
+.sbr-ritual-title {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-size: 1.35rem;
+}
+
+.sbr-ritual-progress-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.sbr-ritual-progress {
+  width: 100%;
+  height: 0.75rem;
+  accent-color: var(--sbr-color-accent);
+}
+
+.sbr-ritual-instruction,
+.sbr-ritual-phase {
+  margin: 0;
+  max-width: 100%;
+}
+
+.sbr-ritual-phase {
+  color: var(--sbr-color-accent);
+  font-size: 1.25rem;
+}
+
+.sbr-ritual-note {
+  margin: 0;
+  color: var(--sbr-color-ink-muted);
+}
+
+.sbr-ritual-countdown {
+  margin: 0;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.sbr-ritual-eye-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.sbr-ritual-breath-body,
+.sbr-ritual-stretch-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.sbr-ritual-footer {
+  margin-top: 0.5rem;
+}
+
+/* Breathing guide: the circle scales between the exhaled and the inhaled size over each phase (9.2). */
+.sbr-breath-guide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 9rem;
+}
+
+.sbr-breath-circle {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    var(--sbr-color-ink) 0%,
+    var(--sbr-color-accent) 60%,
+    var(--sbr-color-button-bg) 100%
+  );
+  transition-property: transform;
+  transition-timing-function: linear;
+  transform: scale(0.6);
+}
+
+/* The hold target is large, so pointer and touch users have a wide area (Requirement 9.4). */
+.sbr-breath-target {
+  width: 100%;
+  min-height: 6rem;
+  font-size: 1.1rem;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sbr-breath-target[aria-pressed='true'] {
+  background-color: var(--sbr-color-button-bg-hover);
+}
+
+.sbr-stretch-title {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-size: 1.2rem;
+}
+
+.sbr-stretch-figure {
+  width: 7rem;
+  height: 7rem;
+}
+
+.sbr-stretch-figure circle,
+.sbr-stretch-figure line,
+.sbr-stretch-figure path {
+  stroke: var(--sbr-color-ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.sbr-ritual-eye-body .sbr-ritual-countdown {
+  font-size: clamp(3.5rem, 16vw, 6rem);
+}
+
+/* Settings_Panel (task 13.1). It is a collapsible opaque panel, so every label keeps its contrast. */
+.sbr-settings {
+  display: block;
+  text-align: left;
+}
+
+.sbr-settings > summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--sbr-size-control-min);
+  color: var(--sbr-color-accent);
+  font-family: var(--sbr-font-display);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sbr-settings[open] > summary {
+  margin-bottom: 0.75rem;
+}
+
+.sbr-settings-group {
+  min-width: 0;
+  margin: 0 0 1rem;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sbr-settings-legend {
+  padding: 0;
+  margin-bottom: 0.25rem;
+  color: var(--sbr-color-accent);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sbr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sbr-field input[type='number'] {
+  width: 8rem;
+}
+
+.sbr-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--sbr-size-control-min);
+  cursor: pointer;
+}
+
+.sbr-check input:disabled {
+  cursor: not-allowed;
+}
+
+.sbr-field-error {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-weight: 600;
+}
+
+/* Notices (task 13.2). Each notice is an opaque panel, so its title and message keep their contrast. */
+.sbr-notices {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, var(--sbr-size-panel-max-width));
+  margin: 0 auto;
+  padding: 1rem 1rem 0;
+}
+
+.sbr-notices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sbr-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.sbr-notice-text {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.sbr-notice-title {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-weight: 600;
+}
+
+.sbr-notice-message {
+  margin: 0.25rem 0 0;
+  color: var(--sbr-color-ink-muted);
+}
+
+/* Onboarding_Screen (task 13.3). The panel is opaque, so every paragraph keeps its contrast over the effects. */
+.sbr-onboarding {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: min(100%, var(--sbr-size-panel-max-width));
+  text-align: left;
+}
+
+.sbr-onboarding > .sbr-title {
+  text-align: center;
+}
+
+.sbr-onboarding > p {
+  margin: 0;
+}
+
+.sbr-onboarding .sbr-check {
+  align-self: flex-start;
+}
+
+.sbr-onboarding-start {
+  align-self: center;
+  min-width: 10rem;
+  margin-top: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/*
+ * Nightmare_Mode content warning (task 16.3). An opaque dialog panel, so its text keeps its contrast over the
+ * effects (Requirements 6.2, 19.6). The closed state stays hidden: the display rule below must not override it.
+ */
+.sbr-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: min(calc(100vw - 2rem), var(--sbr-size-panel-max-width));
+  text-align: left;
+}
+
+.sbr-warning:not([open]) {
+  display: none;
+}
+
+.sbr-warning-title {
+  margin: 0;
+  color: var(--sbr-color-accent);
+  font-size: 1.3rem;
+}

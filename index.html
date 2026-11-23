@@ -7,54 +7,9 @@
     <title>Spooky Break Reminder</title>
     <link rel="icon" type="image/svg+xml" href="/icons/candle.svg" />
     <style>
-      :root {
-        color-scheme: dark;
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-      }
-      body {
-        background: #14101c;
-        color: #f5ecd7;
-        font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
-        line-height: 1.5;
-      }
-      .placeholder {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 1.5rem;
-        gap: 1rem;
-        text-align: center;
-      }
-      .candle {
-        width: min(40vw, 8rem);
-        height: auto;
-      }
-      h1 {
-        margin: 0;
-        color: #ffb347;
-        font-size: clamp(1.75rem, 6vw, 3rem);
-        line-height: 1.2;
-      }
-      .pitch {
-        margin: 0;
-        max-width: 36rem;
-        font-size: 1.125rem;
-      }
-      .status {
-        margin: 0;
-        max-width: 36rem;
-        color: #e0d6bf;
+      /* First paint, before the App stylesheet loads. Matches --sbr-color-page-bg in src/ui/theme.ts. */
+      html {
+        background-color: #0d0a12;
       }
     </style>
   </head>
